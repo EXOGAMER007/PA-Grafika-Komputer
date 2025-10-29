@@ -2,6 +2,9 @@
 //translate(0,0);
 //popMatrix();
 
+import processing.sound.*;
+SoundFile suaraBGM;
+
 //class
 mobil mobil = new mobil();
 
@@ -30,11 +33,14 @@ int terbangTiap = 0;
 int coba = 0;
 float tinggiTerbang =0;//tinggi terbang saat ini
 
+
 void setup() {
   size(800, 600, P2D);
 }
 
 void draw() {
+  suaraBGM = new SoundFile(this, "./data/suaraAngin.mp3");
+  
   background(#3399FF);
   parkiran();
   dataranHijau();
@@ -51,6 +57,8 @@ void draw() {
   animasiMobil(10, 430, animasiMobil);
   //testTerbang(10, 430);
   //rect(0, 545, 40, 5);
+  
+  suaraBGM.play();
 }
 
 void parkiran() {
