@@ -14,6 +14,7 @@ float kecepatan = 2;
 
 //animasi jalanan dan pagar
 boolean animasi= true;//memakai animasi atau tidak
+boolean animasiMobil = false; //animasi mobil
 int bergerakJalanan = 0;//jarak muncul
 int bergerakJalanan2 = 800;//jarak muncul
 boolean ulangJalanan = false; //triger animasi jalanan ke 2 dimulai
@@ -47,7 +48,7 @@ void draw() {
   animasiAwan();
   jalan(0, 490, animasi);
   //mobil.gambarMobil(10, 430);
-  animasiMobil(10, 430, animasi);
+  animasiMobil(10, 430, animasiMobil);
   //testTerbang(10, 430);
   //rect(0, 545, 40, 5);
 }
