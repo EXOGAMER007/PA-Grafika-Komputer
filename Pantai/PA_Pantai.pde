@@ -1,16 +1,20 @@
 import processing.sound.*;
 SoundFile musik;
 float waveOffset = 0.0; // Untuk menggerakkan ombak
+float offsetX = 0;     // Variabel untuk melacak pergeseran
+float speed = 3;       // Kecepatan gerakan. Ubah nilai ini sesuai selera.
 
+mobil mobil;
 
 void setup() {
-  size(800, 600);
+  size(800, 600, P3D);
   musik = new SoundFile(this,"./data/pantai.mp3");
+  musik.play();
+  mobil = new mobil();
 }
 
 void draw() {
   
-  musik.play();
   // Latar Belakang
   background(135, 206, 235); // Warna biru langit cerah
   // Menggambar Matahari
@@ -122,97 +126,40 @@ void draw() {
   ellipse(185, 315, 20, 20); 
   ellipse(200, 315, 20, 20);
 
-  // jalanan
-  fill(#2E2E2E); 
-  noStroke();
+  // Jalanan (Bagian statis)
+  // Jalanan utama
+  fill(#2E2E2E);  
   rect(0, 500, 800, 100); 
   
-  fill(#CBBB23);
-  for (int x = 0; x < 800; x+= 60) {
-  rect(0 + x, 545, 30, 10);
-  }
-  
+  // Rel guardrail (bagian horizontal)
   fill(#ABADAB);
   rect(0, 450, 800, 10);
-  for (int x = 0; x < 800; x+= 40) {
-  rect(0 + x, 450, 10, 50);
+
+  // Garis Tengah (Bagian animasi)
+  fill(#CBBB23);
+  // Pola garis berulang setiap 60px (30px garis + 30px spasi)
+  // Kita gunakan modulo (%) agar pergeseran selalu berulang (0 s/d 59)
+  float offsetGaris = offsetX % 60; 
+  // mulai menggambar dari -60 (di luar layar)
+  // agar tidak ada garis yang tiba-tiba muncul di sisi kiri.
+  for (int x = -60; x < 800; x += 60) {
+    // Geser posisi x setiap garis berdasarkan offsetGaris
+    rect(x + offsetGaris, 545, 30, 10);
   }
   
-  
-  // mobile
-  gambarMobil(40,420);
-}
+  // 4. Tiang Guardrail (Bagian animasi)
+  fill(#ABADAB);
+  // Pola tiang berulang setiap 40px (10px tiang + 30px spasi)
+  float offsetTiang = offsetX % 40;
+  // Mulai menggambar dari -40 (di luar layar)
+  for (int x = -40; x < 800; x += 40) {
+    rect(x + offsetTiang, 450, 10, 50);
+  }
 
-void gambarMobil(float x, float y) {
-  pushMatrix();
-  y+=50;
-  translate(x, y);//penentuan lokasi mobil
-  badanMobil();
-  jendelaMobil();
-  peganganPintuMobil();
-  popMatrix();
-}
-
-void badanMobil() {
-  pushMatrix();
-  translate(0, 0);
-  fill(#999900);
-  rect(0, 0, 290, 60);
-  lampuMobil();
-  banMobil();
-  popMatrix();
-}
-
-void lampuMobil() {
-  pushMatrix();
-  translate(0, 0);
-  fill(#FF3333);
-  rect(0, 10, 20, 10);//kiri
-  fill(#0000FF);
-  rect(270, 10, 20, 10);//kanan
-  popMatrix();
-}
-
-void banMobil() {
-  pushMatrix();
-  translate(0, 0);
-  fill(#4D4D4D);
-  circle(53, 60, 40);//ban kiri
-  circle(240, 62.04, 40);//ban kanan
-
-  fill(0);
-  circle(53, 60, 5);//ban kecil kiri
-  circle(240, 62.04, 5);//ban kecil kanan
-  fill(255);
-  popMatrix();
-}
-
-void jendelaMobil() {
-  pushMatrix();
-  translate(0, 0);
-  fill(#666666);
-  beginShape();
-  vertex(0, 0);
-  vertex(45, -50);
-  vertex(196, -50);
-  vertex(245, 0);
-  endShape();
-  
-  //pintu dan kaca dari kiri
-  line(45, -50, 45, 0);
-  line(100, -50, 100, 60);
-  line(150, -50, 150, 60);
-  line(245, 0, 245, 42);
-  
-  popMatrix();
-}
-
-void peganganPintuMobil() {
-  pushMatrix();
-  translate(0,0);
-  fill(255);
-  rect(110, 10, 8, 3);
-  
-  rect(160, 10, 8, 3);
-  popMatrix();
+  // Update Pergeseran
+  // Tambahkan nilai offset di setiap frame agar bergerak
+  offsetX -= speed;
+  stroke(1);
+  strokeWeight(1);
+  mobil.gambarMobil(20,450);
 }
