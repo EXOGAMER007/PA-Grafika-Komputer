@@ -17,15 +17,19 @@ Pohon pohon1 = new Pohon(690, 500);
 Pohon pohon2 = new Pohon(250, 500);
 
 void setup () {
-  size(800, 600);
-  background(255);
+  size(800, 600, P3D);
+  background(0);
   audioStreet = new SoundFile(this, "data/street.mp3");
   audioStreet.loop();
 }
 
 void draw () {
+  pushMatrix();
+  translate(0, 10, 0);
   langit.tampilkan();
-  
+  popMatrix();
+  pushMatrix();
+  translate(0, 0, 20);
   jalan.tampilkan();
 
   gedung1.tampilkan();
@@ -38,4 +42,5 @@ void draw () {
 
   pohon1.tampilkan();
   pohon2.tampilkan();
+  popMatrix();
 }

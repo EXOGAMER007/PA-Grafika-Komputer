@@ -35,12 +35,12 @@ float tinggiTerbang =0;//tinggi terbang saat ini
 
 
 void setup() {
-  size(800, 600, P2D);
+  size(800, 600, P3D);
 }
 
 void draw() {
   suaraBGM = new SoundFile(this, "./data/suaraAngin.mp3");
-  
+
   background(#3399FF);
   parkiran();
   dataranHijau();
@@ -57,7 +57,8 @@ void draw() {
   animasiMobil(10, 430, animasiMobil);
   //testTerbang(10, 430);
   //rect(0, 545, 40, 5);
-  
+
+  noStroke();
   suaraBGM.play();
 }
 
@@ -174,6 +175,7 @@ void matahari(float x, float y) {
 
   pushMatrix();
   translate(x, y);
+  noStroke();
   fill(#FFFF00);
   circle(0+40, 0+40, 80);
   fill(255);
@@ -192,7 +194,7 @@ void awan(float x, float y) {
   pushMatrix();
 
   translate(x, y);
-
+  noStroke();
   //bulatan awan
   bulat(0, 11.5500);
   bulat(14, 0);
@@ -201,7 +203,7 @@ void awan(float x, float y) {
   bulat(54, 30);
   bulat(14, 30);
 
-  noStroke();
+  //noStroke();
   rect(14, 12.5499, 81, 40);
   rect(34, 10.5499, 40, 20);
   rect(34, 34.5499, 40, 20);
@@ -243,6 +245,7 @@ void animasiAwan() {
 void jalan(float x, float y, boolean animation) {
   pushMatrix();
   translate(x, y);
+  noStroke();
   fill(#4D4D4D);
   rect(0, 0, 800, 110);
   fill(255);
@@ -301,6 +304,7 @@ void animasiMobil(float x, float y, Boolean animation) {
 
   pushMatrix();
   translate(x, y);
+  stroke(1);
 
   if (animation) {
     pushMatrix();

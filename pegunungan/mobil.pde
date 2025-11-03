@@ -37,7 +37,7 @@ class mobil {
 
   void banMobil() {
     pushMatrix();
-    translate(0, 0);
+    translate(0, 0,10);
     fill(#4D4D4D);
     circle(53, 60, 40);//ban kiri
     circle(240, 62.04, 40);//ban kanan

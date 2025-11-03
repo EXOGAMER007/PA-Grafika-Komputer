@@ -3,7 +3,7 @@ class Langit {
   Langit() {
   }
 
-  void tampilkan() {
+  void tampilkan() {  
     // Background
     for (int i = 0; i < 300; i++) {
       float inter = map(i, 0, 300, 0, 1);
@@ -20,10 +20,14 @@ class Langit {
     }
     noStroke();
     
+    pushMatrix();
+    translate(0,0,10);
     // Matahari
     fill(255, 120, 80, 200);
     ellipse(100, 100, 180, 180);
     fill(255, 140, 100, 100);
     ellipse(100, 100, 240, 240); 
+    popMatrix();
+    
   }
 }

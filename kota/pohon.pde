@@ -10,7 +10,6 @@ class Pohon {
     // Batang
     fill(80, 50, 30);
     rect(x, y, 20, 50);
-    
     // Daun
     fill(50, 80, 45);
     ellipse(x + 10, y - 35, 80, 80);
