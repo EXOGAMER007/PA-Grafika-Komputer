@@ -120,14 +120,14 @@ class SceneKota {
       fill(40, 38, 35);
       rect(0, 550, width, 50);
       stroke(200, 180, 120);
-      strokeWeight(3); 
+      strokeWeight(1); 
       for (int i = 0; i < width; i += 40) {
         line(i + offset, 575, i + 20 + offset, 575);
       }
       noStroke();
       
-      offset += 2;
-      if (offset >= 40) {
+      offset -= 2;
+      if (offset <= -40) {
         offset = 0;
       }
     }
