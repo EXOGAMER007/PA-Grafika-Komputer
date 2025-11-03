@@ -59,7 +59,7 @@ void draw() {
   //rect(0, 545, 40, 5);
 
   noStroke();
-  suaraBGM.play();
+  //suaraBGM.play();
 }
 
 void parkiran() {
@@ -346,8 +346,10 @@ void animasiMobil(float x, float y, Boolean animation) {
       terbangTiap = 0; // Reset counter
     }
 
-
+    stroke(1);
     mobil.gambarMobil(0, 0);
+    noStroke();
+    
     popMatrix();
     // Cek apakah sudah waktunya terbang lagi
   } else {

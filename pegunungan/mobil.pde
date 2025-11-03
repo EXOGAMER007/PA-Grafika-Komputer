@@ -61,10 +61,13 @@ class mobil {
     endShape();
 
     //pintu dan kaca dari kiri
+    pushMatrix();
     line(45, -50, 45, 0);
     line(100, -50, 100, 60);
     line(150, -50, 150, 60);
+    translate(0,0,10);
     line(245, 0, 245, 42);
+    popMatrix();
 
     popMatrix();
   }
